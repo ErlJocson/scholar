@@ -1,6 +1,8 @@
 :root {
   --blue: #003594;
   --gray: rgb(128, 128, 128);
+  --dark-color: rgb(38, 38, 38);
+  --dark-shadow: 0 2px 20px var(--dark-color);
 }
 
 * {
@@ -15,5 +17,23 @@ body {
   background-image: url("/static/background/background.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
-  background-size: cover;
+  background-size: 100% 100%;
+}
+
+.homepage-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 50px);
+}
+
+.homepage-container h1 {
+  margin-bottom: 20px;
+}
+
+.homepage-pic {
+  height: 400px;
+  width: 1000px;
+  box-shadow: var(--dark-shadow);
 }

@@ -9,16 +9,17 @@ nav {
 
 .nav-logo-container {
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .nav-title {
-  text-transform: uppercase;
   font-size: 20px;
 }
 
 .nav-logo {
-  height: 30px;
-  width: 30px;
+  height: 38px;
+  width: 38px;
   border-radius: 50%;
   margin-right: 8px;
 }
