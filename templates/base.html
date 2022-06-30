@@ -4,19 +4,30 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Scholar</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'index.css' %}" />
+    <link rel="stylesheet" href="{% static 'navigation.css' %}" />
+    <title>Scholar | {{ title }}</title>
   </head>
   <body>
     <nav>
-      <div>
-        <img src="" alt="" class="nav-logo" />
-        <h3 class="nav-title">Logo</h3>
+      <div class="nav-logo-container">
+        <img src="/static/background/background.jpg" alt="" class="nav-logo" />
+        <a class="nav-title">Logo</a>
       </div>
-      <div>
-        <a href="#">Home</a>
-        <a href="#">Profile</a>
-        <a href="#">Change password</a>
-        <a href="#">Logout</a>
+      <div class="nav-items">
+        <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
+        <a href="#"
+          ><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a
+        >
+        <a href="#"
+          ><i class="fa fa-key" aria-hidden="true"></i> Change Password</a
+        >
+        <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
       </div>
     </nav>
     <!--  -->
