@@ -4,34 +4,125 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
+    <!-- <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-    />
+    /> -->
+    <script
+      src="https://kit.fontawesome.com/c9f470076b.js"
+      crossorigin="anonymous"
+    ></script>
     {% load static %}
     <link rel="stylesheet" href="{% static 'index.css' %}" />
     <link rel="stylesheet" href="{% static 'navigation.css' %}" />
+    <link rel="stylesheet" href="{% static 'profile.css' %}" />
+    <link rel="stylesheet" href="{% static 'login.css' %}" />
+    <link rel="stylesheet" href="{% static 'modal.css'%}" />
+    <link rel="stylesheet" href="{% static 'register.css'%}" />
     <title>Scholar | {{ title }}</title>
+    <style>
+      .alert-warning {
+        margin: 0;
+        display: flex;
+        font-weight: bold;
+        justify-content: center;
+        height: 40px;
+        align-items: center;
+        background-color: rgb(255, 97, 97);
+      }
+
+      .alert-success {
+        background-color: rgb(116, 116, 255);
+        margin: 0;
+        align-items: center;
+        justify-content: center;
+        display: flex;
+        font-weight: bold;
+        height: 40px;
+      }
+    </style>
   </head>
   <body>
+    {% if messages %} {% for message in messages %}
+    <div class="alert-{{ message.tags }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% if request.user.is_authenticated %}
     <nav>
       <div class="nav-logo-container">
         <img src="/static/background/logo.png" alt="" class="nav-logo" />
         <a class="nav-title">E-Skolar ni Mayor</a>
       </div>
       <div class="nav-items">
-        <a href="#"><i class="fa fa-home" aria-hidden="true"></i> Home</a>
-        <a href="#"
+        <a href="{% url 'home' %}"
+          ><i class="fa fa-home" aria-hidden="true"></i> Home</a
+        >
+        <a href="{% url 'profile' %}"
           ><i class="fa fa-user-circle-o" aria-hidden="true"></i> Profile</a
         >
-        <a href="#"
+        <a onclick="closeModal('myModal')"
           ><i class="fa fa-key" aria-hidden="true"></i> Change Password</a
         >
-        <a href="#"><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
+        <a href="{% url 'logout' %}"
+          ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a
+        >
       </div>
     </nav>
+    <div class="modal-container" id="myModal">
+      <div class="modal">
+        <form action="http://127.0.0.1:8000/auth/change/">
+          {% csrf_token %}
+          <div class="form-group">
+            <input
+              type="password"
+              placeholder="Old password"
+              name="old_password"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              placeholder="New password"
+              name="new_password"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="password"
+              placeholder="Confirm password"
+              name="confirm_password"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="submit"
+              value="Change password"
+              class="submit-button"
+            />
+          </div>
+        </form>
+        <div class="cancel-container">
+          <button
+            style="padding: 10px 30px; border-radius: 10px"
+            class="submit-button"
+            onclick="closeModal('myModal')"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
+    {% endif %}
     <!--  -->
     <div>{% block content %}{% endblock %}</div>
     <!--  -->
+    <script>
+      function closeModal(id) {
+        var modal = document.getElementById(id).style;
+        if (modal.display === "none") {
+          modal.display = "flex";
+        } else {
+          modal.display = "none";
+        }
+      }
+    </script>
   </body>
 </html>

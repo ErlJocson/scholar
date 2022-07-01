@@ -25,7 +25,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: calc(100vh - 50px);
+  min-height: calc(100vh - 50px);
 }
 
 .homepage-container h1 {
