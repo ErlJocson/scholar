@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from authenticate_user.models import *
 from .models import *
+from django.contrib import messages
 
 @login_required
 def index_view(request):
@@ -70,19 +71,44 @@ def application_status(request):
 # passing the requirements
 def registration_form(request):
     if request.method == 'POST':
-        user_file = request.FILES['image']
+        user_file = request.FILES['file']
         registration = RegistrationForm.objects.create(
             image=user_file,
             user_id=request.user.id,
         )
         registration.save()
+        messages.success(request, 'File uploaded.')
     return redirect('requirement')
 
 def parent_voters_id(request):
+    if request.method == 'POST':
+        user_file = request.FILE['file']
+        voters_id = ParentsVotersID.objects.create(
+            image = user_file,
+            user_id = request.user.id,
+        )
+        voters_id.save()
+        messages.success(request, 'File uploaded.')
     return redirect('requirement')
 
 def scholar_voters_id(request):
+    if request.method == 'POST':
+        user_file = request.FILE['file']
+        voters_id = ScholarVotersID.objects.create(
+            image = user_file,
+            user_id = request.user.id,
+        )
+        voters_id.save()
+        messages.success(request, 'File uploaded.')
     return redirect('requirement')
 
 def scholar_grades(request):
+    if request.method == 'POST':
+        user_file = request.FILE['file']
+        grade = CopyOfGrades.objects.create(
+            image = user_file,
+            user_id = request.user.id,
+        )
+        grade.save()
+        messages.success(request, 'File uploaded.')
     return redirect('requirement')

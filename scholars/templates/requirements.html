@@ -109,7 +109,7 @@
 <div class="modal-container" id="upoad-parent-voter">
   <div class="modal">
     <h2>Parents voters ID</h2>
-    <form action="{% url 'upload-registration' %}" method="post">
+    <form action="{% url 'upload-parents' %}" method="post">
       {% csrf_token %}
       <div class="form-group">
         <input type="file" name="file" />
@@ -134,7 +134,7 @@
 <div class="modal-container" id="upoad-scholar-voter">
   <div class="modal">
     <h2>Scholar voters ID</h2>
-    <form action="{% url 'upload-registration' %}" method="post">
+    <form action="{% url 'upload-scholar' %}" method="post">
       {% csrf_token %}
       <div class="form-group">
         <input type="file" name="file" />
@@ -159,7 +159,7 @@
 <div class="modal-container" id="upoad-copy-grade">
   <div class="modal">
     <h2>Copy of Grades</h2>
-    <form action="{% url 'upload-registration' %}" method="post">
+    <form action="{% url 'upload-grades' %}" method="post">
       {% csrf_token %}
       <div class="form-group">
         <input type="file" name="file" />
