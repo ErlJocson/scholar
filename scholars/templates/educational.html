@@ -1,0 +1,87 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="profile-container">
+  <h1 class="profile-title">
+    {% if other_information.approved %}
+    <i class="fa fa-check-circle check-icon" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-minus-circle close-icon" aria-hidden="true"></i>
+    {% endif %} Student profile
+  </h1>
+  <div class="two-bar-container">
+    <div class="side-bar">
+      <img src="/static/background/defualt.png" alt="" class="profile-pic" />
+      <ul>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'education' %}">Educational background</a></li>
+        <li><a href="{%  url 'guardian' %}">Guardian information</a></li>
+        <li><a href="{% url 'additional' %}">Additional information</a></li>
+        <li><a href="{% url 'requirement' %}">Requirements</a></li>
+      </ul>
+    </div>
+    <div class="informations">
+      <div>
+        <label for="">Elementary school</label>
+        <input disabled type="text" value="{{ background.elementary }}" />
+      </div>
+      <div>
+        <label for="">School address</label>
+        <input
+          disabled
+          type="text"
+          value="{{ background.elem_school_location }}"
+        />
+      </div>
+      <div>
+        <label for="">Year graduated</label>
+        <input
+          disabled
+          type="text"
+          value="{{background.elem_year_graduated}}"
+        />
+      </div>
+      <div>
+        <label for="">Secondary</label>
+        <input disabled type="text" value="{{ background.secondary }}" />
+      </div>
+      <div>
+        <label for="">School address</label>
+        <input
+          disabled
+          type="text"
+          value="{{ background.secondary_school_location }}"
+        />
+      </div>
+      <div>
+        <label for="">Year graduated</label>
+        <input
+          disabled
+          type="text"
+          value="{{ background.secondary_year_graduated }}"
+        />
+      </div>
+      <div>
+        <label for="">Senior</label>
+        <input disabled type="text" value="{{background.senior_high}}" />
+      </div>
+      <div>
+        <label for="">School Address</label>
+        <input
+          disabled
+          type="text"
+          value="{{background.senior_school_location}}"
+        />
+      </div>
+      <div>
+        <label for="">Year graduated</label>
+        <input
+          disabled
+          type="text"
+          value="{{background.senior_year_graduated}}"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

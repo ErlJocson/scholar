@@ -1,0 +1,192 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="profile-container">
+  <h1 class="profile-title">
+    {% if other_information.approved %}
+    <i class="fa fa-check-circle check-icon" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-minus-circle close-icon" aria-hidden="true"></i>
+    {% endif %} Student profile
+  </h1>
+  <div class="two-bar-container">
+    <div class="side-bar">
+      <img src="/static/background/defualt.png" alt="" class="profile-pic" />
+      <ul>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'education' %}">Educational background</a></li>
+        <li><a href="{%  url 'guardian' %}">Guardian information</a></li>
+        <li><a href="{% url 'additional' %}">Additional information</a></li>
+        <li><a href="{% url 'requirement' %}">Requirements</a></li>
+      </ul>
+    </div>
+    <table>
+      <tr>
+        <th>Requirement</th>
+        <th>Attachment</th>
+        <th>Action</th>
+        <th>Status</th>
+      </tr>
+      <tr>
+        <td>Registration form</td>
+        <td>
+          <button class="submit-button requirement">View attachment</button>
+        </td>
+        <td>
+          <button
+            class="submit-button requirement"
+            onclick="closeModal('upoad-registration')"
+          >
+            Upload
+          </button>
+        </td>
+        <td>For checking</td>
+      </tr>
+      <tr>
+        <td>Parents Voters ID</td>
+        <td>
+          <button class="submit-button requirement">View attachment</button>
+        </td>
+        <td>
+          <button
+            class="submit-button requirement"
+            onclick="closeModal('upoad-parent-voter')"
+          >
+            Upload
+          </button>
+        </td>
+        <td>For checking</td>
+      </tr>
+      <tr>
+        <td>Scholar Voters ID</td>
+        <td>
+          <button class="submit-button requirement">View attachment</button>
+        </td>
+        <td>
+          <button
+            class="submit-button requirement"
+            onclick="closeModal('upoad-scholar-voter')"
+          >
+            Upload
+          </button>
+        </td>
+        <td>For checking</td>
+      </tr>
+      <tr>
+        <td>Copy of Grades</td>
+        <td>
+          <button class="submit-button requirement">View attachment</button>
+        </td>
+        <td>
+          <button
+            class="submit-button requirement"
+            onclick="closeModal('upoad-copy-grade')"
+          >
+            Upload
+          </button>
+        </td>
+        <td>For checking</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<div class="modal-container" id="upoad-registration">
+  <div class="modal">
+    <h2>Registration form</h2>
+    <form action="{% url 'upload-registration' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="file" name="file" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" class="submit-button" />
+      </div>
+    </form>
+    <div class="cancel-container">
+      <button
+        style="padding: 10px 30px; border-radius: 10px"
+        class="submit-button"
+        onclick="closeModal('upoad-registration')"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- wala pang action to -->
+<div class="modal-container" id="upoad-parent-voter">
+  <div class="modal">
+    <h2>Parents voters ID</h2>
+    <form action="{% url 'upload-registration' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="file" name="file" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" class="submit-button" />
+      </div>
+    </form>
+    <div class="cancel-container">
+      <button
+        style="padding: 10px 30px; border-radius: 10px"
+        class="submit-button"
+        onclick="closeModal('upoad-parent-voter')"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+<div class="modal-container" id="upoad-scholar-voter">
+  <div class="modal">
+    <h2>Scholar voters ID</h2>
+    <form action="{% url 'upload-registration' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="file" name="file" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" class="submit-button" />
+      </div>
+    </form>
+    <div class="cancel-container">
+      <button
+        style="padding: 10px 30px; border-radius: 10px"
+        class="submit-button"
+        onclick="closeModal('upoad-scholar-voter')"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+<!--  -->
+<div class="modal-container" id="upoad-copy-grade">
+  <div class="modal">
+    <h2>Copy of Grades</h2>
+    <form action="{% url 'upload-registration' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <input type="file" name="file" />
+      </div>
+      <div class="form-group">
+        <input type="submit" value="Submit" class="submit-button" />
+      </div>
+    </form>
+    <div class="cancel-container">
+      <button
+        style="padding: 10px 30px; border-radius: 10px"
+        class="submit-button"
+        onclick="closeModal('upoad-copy-grade')"
+      >
+        Cancel
+      </button>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

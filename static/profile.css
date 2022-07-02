@@ -19,7 +19,7 @@
 .side-bar {
   background-color: white;
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   width: 300px;
@@ -65,4 +65,45 @@
 .informations {
   width: 900px;
   background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  height: 300px;
+}
+
+.informations div {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 5px;
+  padding: 0;
+  box-shadow: none;
+}
+
+.informations div label {
+  font-size: 16px;
+}
+.informations div input {
+  padding: 6px;
+}
+
+table {
+  width: 780px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: var(--dark-shadow);
+  margin: 20px 0;
+  border-radius: 10px;
+}
+
+.requirement {
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+table tr td,
+th {
+  border: 1px solid gray;
+  text-align: center;
 }

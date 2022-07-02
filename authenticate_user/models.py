@@ -10,19 +10,19 @@ class OtherInformation(models.Model):
     sex = models.CharField(max_length=256)
     civil_status = models.CharField(max_length=256)
     address = models.CharField(max_length=256)
-    approved = models.BooleanField(blank=True, null=True)
+    approved = models.BooleanField(default=False)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class StudentEducationBackground(models.Model):
     elementary = models.CharField(max_length=256)
-    school_location = models.CharField(max_length=256)
-    year_graduated = models.CharField(max_length=256)
+    elem_school_location = models.CharField(max_length=256)
+    elem_year_graduated = models.CharField(max_length=256)
     secondary = models.CharField(max_length=256)
-    school_location = models.CharField(max_length=256)
-    year_graduated = models.CharField(max_length=256)
+    secondary_school_location = models.CharField(max_length=256)
+    secondary_year_graduated = models.CharField(max_length=256)
     senior_high = models.CharField(max_length=256)
-    school_location = models.CharField(max_length=256)
-    year_graduated = models.CharField(max_length=256)
+    senior_school_location = models.CharField(max_length=256)
+    senior_year_graduated = models.CharField(max_length=256)
     user_id = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class GuardianInformation(models.Model):

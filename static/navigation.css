@@ -1,10 +1,12 @@
 nav {
   height: 50px;
-  background-color: var(--blue);
-  color: white;
+  background-color: #f4c430;
+  color: var(--blue);
+  font-weight: bold;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  box-shadow: var(--dark-shadow);
 }
 
 .nav-logo-container {
@@ -25,11 +27,12 @@ nav {
 }
 
 .nav-items a {
-  color: white;
   text-decoration: none;
   cursor: pointer;
+  color: var(--blue);
+  font-weight: bold;
   margin: 0 10px;
-  border-bottom: 1px solid white;
+  border-bottom: 1px solid var(--blue);
 }
 
 .nav-items a:hover {

@@ -2,21 +2,77 @@
 
 <div class="profile-container">
   <h1 class="profile-title">
+    {% if other_information.approved %}
     <i class="fa fa-check-circle check-icon" aria-hidden="true"></i>
-    <i class="fa fa-minus-circle close-icon" aria-hidden="true"></i>Student
-    profile
+    {% else %}
+    <i class="fa fa-minus-circle close-icon" aria-hidden="true"></i>
+    {% endif %} Student profile
   </h1>
   <div class="two-bar-container">
     <div class="side-bar">
       <img src="/static/background/defualt.png" alt="" class="profile-pic" />
       <ul>
-        <li><a href="#">Profile</a></li>
-        <li><a href="#">Educational background</a></li>
-        <li><a href="#">Guardian information</a></li>
-        <li><a href="#">Additional information</a></li>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'education' %}">Educational background</a></li>
+        <li><a href="{%  url 'guardian' %}">Guardian information</a></li>
+        <li><a href="{% url 'additional' %}">Additional information</a></li>
+        <li><a href="{% url 'requirement' %}">Requirements</a></li>
       </ul>
     </div>
-    <div class="informations">asdf</div>
+    <div class="informations">
+      <div>
+        <label for="">First name</label>
+        <input disabled type="text" value="{{ current_user.first_name }}" />
+      </div>
+      <div>
+        <label for="">Last name</label>
+        <input disabled type="text" value="{{ current_user.last_name }}" />
+      </div>
+      <div>
+        <label for="">Email</label>
+        <input disabled type="text" value="{{current_user.email}}" />
+      </div>
+      <div>
+        <label for="">Middle name</label>
+        <input
+          disabled
+          type="text"
+          value="{{ other_information.middle_name }}"
+        />
+      </div>
+      <div>
+        <label for="">Birthday</label>
+        <input disabled type="text" value="{{ other_information.birthday }}" />
+      </div>
+      <div>
+        <label for="">Birth place</label>
+        <input disabled type="text" value="{{other_information.birth_place}}" />
+      </div>
+      <div>
+        <label for="">Age</label>
+        <input disabled type="text" value="{{other_information.age}}" />
+      </div>
+      <div>
+        <label for="">Contact</label>
+        <input disabled type="text" value="{{other_information.contact}}" />
+      </div>
+      <div>
+        <label for="">Sex</label>
+        <input disabled type="text" value="{{other_information.sex}}" />
+      </div>
+      <div>
+        <label for="">Civil status</label>
+        <input
+          disabled
+          type="text"
+          value="{{other_information.civil_status}}"
+        />
+      </div>
+      <div>
+        <label for="">Address</label>
+        <input disabled type="text" value="{{other_information.address}}" />
+      </div>
+    </div>
   </div>
 </div>
 

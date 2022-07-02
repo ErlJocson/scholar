@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="profile-container">
+  <h1 class="profile-title">
+    {% if other_information.approved %}
+    <i class="fa fa-check-circle check-icon" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-minus-circle close-icon" aria-hidden="true"></i>
+    {% endif %} Student profile
+  </h1>
+  <div class="two-bar-container">
+    <div class="side-bar">
+      <img src="/static/background/defualt.png" alt="" class="profile-pic" />
+      <ul>
+        <li><a href="{% url 'profile' %}">Profile</a></li>
+        <li><a href="{% url 'education' %}">Educational background</a></li>
+        <li><a href="{%  url 'guardian' %}">Guardian information</a></li>
+        <li><a href="{% url 'additional' %}">Additional information</a></li>
+        <li><a href="{% url 'requirement' %}">Requirements</a></li>
+      </ul>
+    </div>
+    <div class="informations">
+      <div>
+        <label for="">Mother's name</label>
+        <input disabled type="text" value="{{ guardian.mother_name }}" />
+      </div>
+      <div>
+        <label for="">Mother's occupation</label>
+        <input disabled type="text" value="{{ guardian.mother_ocupation }}" />
+      </div>
+      <div>
+        <label for="">Mother's income</label>
+        <input disabled type="text" value="{{ guardian.mother_income }}" />
+      </div>
+      <div>
+        <label for="">Father's name</label>
+        <input disabled type="text" value="{{ guardian.father_name }}" />
+      </div>
+      <div>
+        <label for="">Father's occupation</label>
+        <input disabled type="text" value="{{ guardian.father_ocupation }}" />
+      </div>
+      <div>
+        <label for="">Father's income</label>
+        <input disabled type="text" value="{{ guardian.father_income }}" />
+      </div>
+      <div>
+        <label for="">Contact</label>
+        <input disabled type="text" value="{{ guardian.contact }}" />
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

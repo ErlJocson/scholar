@@ -68,7 +68,7 @@
     </nav>
     <div class="modal-container" id="myModal">
       <div class="modal">
-        <form action="http://127.0.0.1:8000/auth/change/">
+        <form action="{% url 'change-password' %}" method="post">
           {% csrf_token %}
           <div class="form-group">
             <input
@@ -114,15 +114,6 @@
     <!--  -->
     <div>{% block content %}{% endblock %}</div>
     <!--  -->
-    <script>
-      function closeModal(id) {
-        var modal = document.getElementById(id).style;
-        if (modal.display === "none") {
-          modal.display = "flex";
-        } else {
-          modal.display = "none";
-        }
-      }
-    </script>
+    <script src="{% static 'js/modal.js' %}"></script>
   </body>
 </html>

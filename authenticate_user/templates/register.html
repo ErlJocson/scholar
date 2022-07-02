@@ -5,8 +5,17 @@
   <h1>E-Skolar ni Mayor</h1>
 
   <form method="post">
+    {% csrf_token %}
     <h3>Personal information</h3>
     <div class="input-container">
+      <div>
+        <label for="">Email</label>
+        <input required type="email" name="email" />
+      </div>
+      <div>
+        <label for="">Username</label>
+        <input required type="text" name="username" />
+      </div>
       <div>
         <label for="">First name</label>
         <input required type="text" name="first_name" />
@@ -29,15 +38,15 @@
       </div>
       <div>
         <label for="">Age</label>
-        <input required type="text" name="age" />
+        <input required type="number" name="age" />
       </div>
       <div>
         <label for="">Contact</label>
-        <input required type="text" name="contact" />
+        <input required type="text" name="student_contact" />
       </div>
       <div>
         <label for="">Address</label>
-        <input required type="text" name="Address" />
+        <input required type="text" name="address" />
       </div>
       <div>
         <label for="">Sex</label>
@@ -142,7 +151,7 @@
       </div>
       <div>
         <label for="">Expected year of graduation</label>
-        <input required type="text" name="gradution_year" />
+        <input required type="text" name="graduation_year" />
       </div>
       <div>
         <label for="">Graduating</label>
@@ -153,11 +162,36 @@
       </div>
       <div>
         <label for="">School name</label>
-        <input required type="text" name="school_name" />
+        <select name="school_name">
+          <option value="ACTS computer college">ACTS computer college</option>
+          <option value="Laguna State Polytechnic University">
+            Laguna State Polytechnic University
+          </option>
+          <option value="Laguna University">Laguna University</option>
+          <option value="AMA college">AMA college</option>
+          <option value="STI college">STI college</option>
+          <option value="Union College">Union College</option>
+          <option value="Philippine Women's University">
+            Philippine Women's University
+          </option>
+        </select>
       </div>
       <div>
         <label for="">School address</label>
         <input required type="text" name="school_add" />
+      </div>
+    </div>
+    <hr class="line" />
+    <div class="password">
+      <div>
+        <label for="">Passowrd: </label>
+        <input type="password" placeholder="Password" name="password" />
+        <label for="">Confirm password: </label>
+        <input
+          type="password"
+          placeholder="Confirm password"
+          name="confirm_password"
+        />
       </div>
     </div>
     <div class="form-group" style="margin-top: 20px">
@@ -167,9 +201,6 @@
       <a href="{% url 'login' %}" class="button-in-login"
         ><i class="fa-solid fa-question"></i> Already have an account?</a
       >
-      <!-- <a href="{% url 'register' %}" class="button-in-login"
-        ><i class="fa-solid fa-pencil"></i> Register</a
-      > -->
     </div>
   </form>
 </div>
