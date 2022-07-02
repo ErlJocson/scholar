@@ -50,6 +50,10 @@
   color: gray;
 }
 
+.side-bar ul li a:active {
+  color: gray;
+}
+
 .two-bar-container {
   display: flex;
   justify-content: center;
@@ -106,4 +110,19 @@ table tr td,
 th {
   border: 1px solid gray;
   text-align: center;
+}
+
+.status-container {
+  text-align: center;
+  align-items: center;
+}
+
+.application-status {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 50px;
+  letter-spacing: 8px;
+  font-style: italic;
+  color: var(--blue);
+  text-transform: uppercase;
+  text-decoration: underline;
 }

@@ -3,13 +3,11 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from authenticate_user.models import *
 from .models import *
-# Create your views here.
 
 @login_required
 def index_view(request):
     return render(request, 'index.html', {
-        'title':'Home',
-        
+        'title':'Home',  
     })
 
 @login_required
@@ -62,13 +60,21 @@ def requirements_profile(request):
 
 @login_required
 def application_status(request):
+    other_information = OtherInformation.objects.get(user_id=request.user.id)
+    status = other_information.approved
     return render(request, 'status.html', {
-        'title':'Application status'
+        'title':'Application status',
+        'status':status,
     })
 
+# passing the requirements
 def registration_form(request):
     if request.method == 'POST':
-        registration = RegistrationForm.objects.create()
+        user_file = request.FILES['image']
+        registration = RegistrationForm.objects.create(
+            image=user_file,
+            user_id=request.user.id,
+        )
         registration.save()
     return redirect('requirement')
 

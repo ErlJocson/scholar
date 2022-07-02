@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {%block content%}
+
+<div class="profile-container">
+  <h1 class="profile-title">
+    {% if status %}
+    <i class="fa fa-check-circle check-icon" aria-hidden="true"></i>
+    {% else %}
+    <i class="fa fa-minus-circle close-icon" aria-hidden="true"></i>
+    {% endif %} Student profile
+  </h1>
+  <div class="two-bar-container">
+    <div class="side-bar">{% include 'side-bar.html' %}</div>
+    <div class="informations status-container">
+      {% if status%}
+      <h2 class="application-status">Your application is accepted</h2>
+      {% else %}
+      <h2 class="application-status">
+        Your application is still being reviewed
+      </h2>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

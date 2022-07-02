@@ -9,16 +9,7 @@
     {% endif %} Student profile
   </h1>
   <div class="two-bar-container">
-    <div class="side-bar">
-      <img src="/static/background/defualt.png" alt="" class="profile-pic" />
-      <ul>
-        <li><a href="{% url 'profile' %}">Profile</a></li>
-        <li><a href="{% url 'education' %}">Educational background</a></li>
-        <li><a href="{%  url 'guardian' %}">Guardian information</a></li>
-        <li><a href="{% url 'additional' %}">Additional information</a></li>
-        <li><a href="{% url 'requirement' %}">Requirements</a></li>
-      </ul>
-    </div>
+    <div class="side-bar">{% include 'side-bar.html' %}</div>
     <div class="informations">
       <div>
         <label for="">Mother's name</label>
