@@ -34,6 +34,6 @@ body {
 
 .homepage-pic {
   height: 400px;
-  width: 700px;
+  width: 1000px;
   box-shadow: var(--dark-shadow);
 }

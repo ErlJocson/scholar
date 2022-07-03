@@ -20,7 +20,14 @@
       <tr>
         <td>Registration form</td>
         <td>
-          <button class="submit-button requirement">View attachment</button>
+          {% if register %}
+          <button
+            class="submit-button requirement"
+            onclick="window.open('{{ MEDIA_URL }}{{ register.image }}')"
+          >
+            View attachment
+          </button>
+          {% else %} No attachment to view {%endif%}
         </td>
         <td>
           <button
@@ -30,12 +37,25 @@
             Upload
           </button>
         </td>
+        {% if register.approved == 'Approved' %}
+        <td style="color: green">Approved</td>
+        {% elif register.approved == 'Disapproved' %}
+        <td style="color: red">Disapproved</td>
+        {% else %}
         <td>For checking</td>
+        {% endif %}
       </tr>
       <tr>
         <td>Parents Voters ID</td>
         <td>
-          <button class="submit-button requirement">View attachment</button>
+          {% if parent%}
+          <button
+            class="submit-button requirement"
+            onclick="window.open('{{ MEDIA_URL }}{{ parent.image }}')"
+          >
+            View attachment
+          </button>
+          {% else %} No attachment to view {%endif%}
         </td>
         <td>
           <button
@@ -45,12 +65,25 @@
             Upload
           </button>
         </td>
+        {% if parent.approved == 'Approved' %}
+        <td style="color: green">Approved</td>
+        {% elif parent.approved == 'Disapproved' %}
+        <td style="color: red">Disapproved</td>
+        {% else %}
         <td>For checking</td>
+        {% endif %}
       </tr>
       <tr>
         <td>Scholar Voters ID</td>
         <td>
-          <button class="submit-button requirement">View attachment</button>
+          {% if scholar%}
+          <button
+            class="submit-button requirement"
+            onclick="window.open('{{ MEDIA_URL }}{{ scholar.image }}')"
+          >
+            View attachment
+          </button>
+          {% else %} No attachment to view {%endif%}
         </td>
         <td>
           <button
@@ -60,12 +93,25 @@
             Upload
           </button>
         </td>
+        {% if scholar.approved == 'Approved' %}
+        <td style="color: green">Approved</td>
+        {% elif scholar.approved == 'Disapproved' %}
+        <td style="color: red">Disapproved</td>
+        {% else %}
         <td>For checking</td>
+        {% endif %}
       </tr>
       <tr>
         <td>Copy of Grades</td>
         <td>
-          <button class="submit-button requirement">View attachment</button>
+          {% if grade%}
+          <button
+            class="submit-button requirement"
+            onclick="window.open('{{ MEDIA_URL }}{{ grade.image }}')"
+          >
+            View attachment
+          </button>
+          {% else %} No attachment to view {%endif%}
         </td>
         <td>
           <button
@@ -75,7 +121,13 @@
             Upload
           </button>
         </td>
+        {% if grade.approved == 'Approved' %}
+        <td style="color: green">Approved</td>
+        {% elif grade.approved == 'Disapproved' %}
+        <td style="color: red">Disapproved</td>
+        {% else %}
         <td>For checking</td>
+        {% endif %}
       </tr>
     </table>
   </div>
@@ -84,10 +136,14 @@
 <div class="modal-container" id="upoad-registration">
   <div class="modal">
     <h2>Registration form</h2>
-    <form action="{% url 'upload-registration' %}" method="post">
+    <form
+      action="{% url 'upload-registration' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %}
       <div class="form-group">
-        <input type="file" name="file" />
+        <input type="file" name="file" accept="application/pdf" />
       </div>
       <div class="form-group">
         <input type="submit" value="Submit" class="submit-button" />
@@ -105,14 +161,17 @@
   </div>
 </div>
 
-<!-- wala pang action to -->
 <div class="modal-container" id="upoad-parent-voter">
   <div class="modal">
     <h2>Parents voters ID</h2>
-    <form action="{% url 'upload-parents' %}" method="post">
+    <form
+      action="{% url 'upload-parents' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %}
       <div class="form-group">
-        <input type="file" name="file" />
+        <input type="file" name="file" accept="application/pdf" />
       </div>
       <div class="form-group">
         <input type="submit" value="Submit" class="submit-button" />
@@ -134,10 +193,14 @@
 <div class="modal-container" id="upoad-scholar-voter">
   <div class="modal">
     <h2>Scholar voters ID</h2>
-    <form action="{% url 'upload-scholar' %}" method="post">
+    <form
+      action="{% url 'upload-scholar' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %}
       <div class="form-group">
-        <input type="file" name="file" />
+        <input type="file" name="file" accept="application/pdf" />
       </div>
       <div class="form-group">
         <input type="submit" value="Submit" class="submit-button" />
@@ -159,10 +222,14 @@
 <div class="modal-container" id="upoad-copy-grade">
   <div class="modal">
     <h2>Copy of Grades</h2>
-    <form action="{% url 'upload-grades' %}" method="post">
+    <form
+      action="{% url 'upload-grades' %}"
+      method="post"
+      enctype="multipart/form-data"
+    >
       {% csrf_token %}
       <div class="form-group">
-        <input type="file" name="file" />
+        <input type="file" name="file" accept="application/pdf" />
       </div>
       <div class="form-group">
         <input type="submit" value="Submit" class="submit-button" />
@@ -179,5 +246,4 @@
     </div>
   </div>
 </div>
-
 {% endblock %}

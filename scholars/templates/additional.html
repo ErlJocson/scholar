@@ -10,7 +10,7 @@
   </h1>
   <div class="two-bar-container">
     <div class="side-bar">{% include 'side-bar.html' %}</div>
-    <div class="informations">
+    <div class="informations information-changes">
       <div>
         <label for="">Course</label>
         <input disabled type="text" value="{{ additional.course }}" />
@@ -40,12 +40,17 @@
         {% endif %}
       </div>
       <div>
-        <label for="">School name</label>
-        <input disabled type="text" value="{{ additional.school_name }}" />
-      </div>
-      <div>
         <label for="">School address</label>
         <input disabled type="text" value="{{additional.school_address}}" />
+      </div>
+      <div>
+        <label for="">School name</label>
+        <input
+          disabled
+          type="text"
+          value="{{ additional.school_name }}"
+          class="school-name-input"
+        />
       </div>
     </div>
   </div>

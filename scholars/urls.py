@@ -14,4 +14,5 @@ urlpatterns = [
     path('profile/upload-parents', views.parent_voters_id, name='upload-parents'),
     path('profile/upload-scholar', views.scholar_voters_id, name='upload-scholar'),
     path('profile/upload-grades', views.scholar_grades, name='upload-grades'),
+    path('profile/insert-image', views.change_picture, name='change-picture')
 ]

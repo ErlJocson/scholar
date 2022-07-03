@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="{% static 'login.css' %}" />
     <link rel="stylesheet" href="{% static 'modal.css'%}" />
     <link rel="stylesheet" href="{% static 'register.css'%}" />
+    <link rel="stylesheet" href="{% static 'update.css' %}" />
     <title>Scholar | {{ title }}</title>
     <style>
       .alert-warning {
@@ -60,6 +61,9 @@
         >
         <a onclick="closeModal('myModal')"
           ><i class="fa fa-key" aria-hidden="true"></i> Change Password</a
+        >
+        <a href="{% url 'update' %}"
+          ><i class="fa-solid fa-file-pen"></i> Update information</a
         >
         <a href="{% url 'logout' %}"
           ><i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a
@@ -113,7 +117,34 @@
     {% endif %}
     <!--  -->
     <div>{% block content %}{% endblock %}</div>
-    <!--  -->
+    <!-- image modal -->
+    <div class="modal-container" id="image-modal">
+      <div class="modal">
+        <h2>Change profile picture</h2>
+        <form
+          action="{% url 'change-picture' %}"
+          method="post"
+          enctype="multipart/form-data"
+        >
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="file" name="file" accept="image/*" required />
+          </div>
+          <div class="form-group">
+            <input type="submit" value="Update picture" class="submit-button" />
+          </div>
+        </form>
+        <div class="cancel-container">
+          <button
+            style="padding: 10px 30px; border-radius: 10px"
+            class="submit-button"
+            onclick="closeModal('image-modal')"
+          >
+            Cancel
+          </button>
+        </div>
+      </div>
+    </div>
     <script src="{% static 'js/modal.js' %}"></script>
   </body>
 </html>

@@ -1,9 +1,6 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html'%} {% block content %}
 
-<div class="container">
-  <img src="/static/background/logo.png" alt="" />
-  <h1>E-Skolar ni Mayor</h1>
-
+<div class="container update-information">
   <form method="post">
     {% csrf_token %}
     <h3>Personal information</h3>
@@ -116,7 +113,7 @@
       </div>
       <div>
         <label for="">Mother income</label>
-        <input required type="text" name="mother_income" />
+        <input required type="number" name="mother_income" />
       </div>
       <div>
         <label for="">Father fullname</label>
@@ -128,7 +125,7 @@
       </div>
       <div>
         <label for="">Father income</label>
-        <input required type="text" name="father_income" />
+        <input required type="number" name="father_income" />
       </div>
       <div>
         <label for="">Mobile no.</label>
@@ -188,25 +185,8 @@
       </div>
     </div>
     <hr class="line" />
-    <div class="password">
-      <div>
-        <label for="">Passowrd: </label>
-        <input type="password" placeholder="Password" name="password" />
-        <label for="">Confirm password: </label>
-        <input
-          type="password"
-          placeholder="Confirm password"
-          name="confirm_password"
-        />
-      </div>
-    </div>
     <div class="form-group" style="margin-top: 20px">
       <input type="submit" class="submit-button" />
-    </div>
-    <div class="bottom-button">
-      <a href="{% url 'login' %}" class="button-in-login"
-        ><i class="fa-solid fa-question"></i> Already have an account?</a
-      >
     </div>
   </form>
 </div>

@@ -13,6 +13,14 @@
     <div class="informations status-container">
       {% if status%}
       <h2 class="application-status">Your application is accepted</h2>
+      <div>
+        <label for="">Release of allowance</label>
+        <input type="text" disabled value="{{ grant_schedule }}" />
+      </div>
+      <div>
+        <label for="">Kilo's of plastic waste</label>
+        <input type="" value="{{ total_plastic_kilo }}" disabled />
+      </div>
       {% else %}
       <h2 class="application-status">
         Your application is still being reviewed

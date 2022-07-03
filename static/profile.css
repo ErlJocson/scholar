@@ -30,7 +30,6 @@
   width: 230px;
   box-shadow: var(--dark-shadow);
   margin-bottom: 30px;
-  border-radius: 50%;
 }
 
 .side-bar ul li {
@@ -73,6 +72,10 @@
   flex-wrap: wrap;
   justify-content: center;
   height: 300px;
+}
+
+.information-changes {
+  justify-content: flex-start;
 }
 
 .informations div {
@@ -125,4 +128,8 @@ th {
   color: var(--blue);
   text-transform: uppercase;
   text-decoration: underline;
+}
+
+.school-name-input {
+  width: 610px;
 }
