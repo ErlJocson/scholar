@@ -19,7 +19,6 @@
 .side-bar {
   background-color: white;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   flex-direction: column;
   width: 300px;
@@ -116,20 +115,39 @@ th {
 }
 
 .status-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   text-align: center;
   align-items: center;
+  background-color: white;
 }
 
 .application-status {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
   font-size: 50px;
-  letter-spacing: 8px;
+  letter-spacing: 4px;
   font-style: italic;
   color: var(--blue);
   text-transform: uppercase;
   text-decoration: underline;
 }
 
+.announcement {
+  width: 500px;
+  padding: 20px;
+  font-size: 20px;
+}
+
 .school-name-input {
   width: 610px;
+}
+
+.total-kilo {
+  border: none;
+  height: 10px;
+  text-align: left;
+}
+
+.total-kilo p {
+  margin-top: 10px;
 }

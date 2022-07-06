@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{% static 'modal.css'%}" />
     <link rel="stylesheet" href="{% static 'register.css'%}" />
     <link rel="stylesheet" href="{% static 'update.css' %}" />
+    <link rel="stylesheet" href="{% static 'forget.css' %}" />
     <title>Scholar | {{ title }}</title>
     <style>
       .alert-warning {
@@ -72,6 +73,7 @@
     </nav>
     <div class="modal-container" id="myModal">
       <div class="modal">
+        <h2 style="margin: 10px">Change password</h2>
         <form action="{% url 'change-password' %}" method="post">
           {% csrf_token %}
           <div class="form-group">

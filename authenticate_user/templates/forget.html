@@ -1,7 +1,8 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="login-form-container">
-  <h1>E-Skolar Information System</h1>
+  <img src="/static/background/logo.png" alt="" class="login-logo" />
+  <h1>Find your account</h1>
   <form class="login-form" method="post">
     {% csrf_token %}
     <div class="form-group">

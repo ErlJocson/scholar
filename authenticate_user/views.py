@@ -158,35 +158,17 @@ def change_password(request):
         new_password = request.POST['new_password']
         confirm_password = request.POST['confirm_password']
 
-        user = User.objects.filter(id=request.user.id)
-        check_password = authenticate(request, username=user[0].username, password=password)
+        user = User.objects.get(id=request.user.id)
+        check_password = authenticate(request, username=user.username, password=password)
         if check_password and new_password == confirm_password:
-            user[0].set_password(new_password)
-            user[0].save()
+            user.set_password(new_password)
+            user.save()
             messages.success(request, 'Password updated.')
-            login(request, user[0])
+            login(request, user)
             return redirect('home')
 
         messages.warning(request, 'Wrong user password or Password did not match.')
     return redirect('home')
-
-def change_password_form(request, id):
-    if request.method == 'POST':
-        new_password = request.POST['new_password']
-        confirm_password = request.POST['confirm_password']
-
-        user = User.objects.filter(id=id)
-        check_if_exist = authenticate(request, username=user[0].username, password=user[0].password)
-        messages.success(request, f'{check_if_exist}')
-        if check_if_exist and new_password == confirm_password:
-            user[0].set_password(new_password)
-            user[0].save()
-            messages.success(request, 'Password changed.')
-            return redirect('login')
-
-    return render(request, 'forget-password-form.html', {
-        'title':'Forget password',
-    })
 
 @login_required
 def update_informations(request):
@@ -303,9 +285,25 @@ def forget_password_view(request):
         
         check_if_exist = User.objects.filter(username=username, first_name=first_name, last_name=last_name)
         if check_if_exist:
-            return redirect('change-password-form', id=check_if_exist[0].id)
+            messages.success(request, 'You can now change your password')
+            return redirect('change-password-form', user_id=int(check_if_exist[0].id))
         messages.warning(request, 'Wrong credentials')
     return render(request, 'forget.html', {
         'title':'Forget password',
     })
 
+def change_password_form(request, user_id):
+    if request.method == 'POST':
+        new_password = request.POST['new_password']
+        confirm_password = request.POST['confirm_password']
+        user = User.objects.get(id=user_id)
+        
+        if new_password == confirm_password:
+            user.set_password(new_password)
+            user.save()
+            messages.success(request, 'Password changed.')
+            return redirect('home')
+
+    return render(request, 'forget-password-form.html', {
+        'title':'Forget password',
+    })

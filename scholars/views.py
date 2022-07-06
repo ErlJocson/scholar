@@ -100,8 +100,17 @@ def requirements_profile(request):
     except:
         image = False
 
+    plastic_kilo = KiloOfPlastic.objects.filter(user_id=request.user.id)
+    if plastic_kilo:
+        total_plastic_kilo = 0
+        for kilo in plastic_kilo:
+            total_plastic_kilo = total_plastic_kilo + kilo.kilo
+    else:
+        total_plastic_kilo = 0
+
     return render(request, 'requirements.html', {
         'title':'Requirements',
+        'total_plastic_kilo':total_plastic_kilo,
         'other_information':other_information,
         'register': register,
         'parent': parent,
@@ -117,28 +126,17 @@ def application_status(request):
     except:
         image = False
     
-    
-    plastic_kilo = KiloOfPlastic.objects.filter(user_id=request.user.id)
-    if plastic_kilo:
-        total_plastic_kilo = 0
-        for kilo in plastic_kilo:
-            total_plastic_kilo = total_plastic_kilo + kilo.kilo
-            print(kilo)
-
     other_information = OtherInformation.objects.get(user_id=request.user.id)
     status = other_information.approved
-
-    grants_schedule = DateOfGrants.objects.filter(show=True)
-    if not grants_schedule:
-        grants_schedule = 'Scholarship is in process'
-    else:
-        grants_schedule = grants_schedule[0].date
+    try:
+        grants_schedule = DateOfGrants.objects.filter(show=True)[0]
+    except:
+        grants_schedule = False
     return render(request, 'status.html', {
         'title':'Application status',
         'status':status,
         'image':image,
         'grant_schedule':grants_schedule,
-        'total_plastic_kilo':total_plastic_kilo,
     })
 
 @login_required

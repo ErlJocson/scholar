@@ -1,0 +1,19 @@
+.container-forget-password {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.container-forget-password form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: var(--dark-shadow);
+}
+
+.container-forget-password h1 {
+  margin: 20px 0;
+  color: var(--blue);
+}
